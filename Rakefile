@@ -13,7 +13,7 @@ require "fileutils"
 begin
   require 'jeweler'
   files = ["MIT-LICENSE", "Rakefile", "README.textile", "castronaut.rb", "bin/castronaut"]
-  files << Dir["lib/**/*", "app/**/*", "config/**/*",  "vendor/**/*"]
+  files << Dir["lib/**/*", "config/**/*",  "vendor/**/*"]
   
   Jeweler::Tasks.new do |s|
     s.name = "factorylabs-castronaut"
@@ -30,6 +30,11 @@ begin
     s.bindir = 'bin'
     s.default_executable = 'castronaut'
     s.executables = ["castronaut"]    
+    s.add_dependency 'rack'
+    s.add_dependency 'sinatra'
+    s.add_dependency 'sqlite3-ruby'
+    s.add_dependency 'ruby-net-ldap'
+    
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
