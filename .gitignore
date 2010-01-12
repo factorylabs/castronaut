@@ -7,3 +7,5 @@ db
 ssl
 config/castronaut.yml
 tmtags
+development.db
+.DS_Store
