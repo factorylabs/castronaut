@@ -1,6 +1,12 @@
 #!/usr/bin/env ruby
 
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'castronaut'))
+require 'rubygems'
+gem 'activerecord', '>= 2.1.0'
+gem 'activesupport', '>= 2.1.0'
+gem 'sinatra'
+
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'castronaut'))
+
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../vendor/sinatra/lib')
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../vendor/rack/lib')
 
@@ -56,16 +62,14 @@ unless Castronaut.config
   end
 end
 
-Sinatra::Application.set(
-  :environment => Castronaut.config.environment.to_sym,
-  :run => true,
-  :raise_errors => true,
-  :logging => true,
-  :port => Castronaut.config.respond_to?(:server_port) ? Castronaut.config.server_port : Sinatra::Application.default_options[:port]
-)
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'castronaut', 'application', 'application'))
 
-Castronaut.logger.info("Sinatra - Loading app/config.rb")
-load File.expand_path(File.join(File.dirname(__FILE__), '..', 'app', 'config.rb'))
+# Sinatra::Application.set(
+#   :environment => Castronaut.config.environment.to_sym,
+#   :run => true,
+#   :raise_errors => true,
+#   :logging => true,
+#   :port => Castronaut.config.respond_to?(:server_port) ? Castronaut.config.server_port : Sinatra::Application.default_options[:port]
+# )
 
-Castronaut.logger.info("Sinatra - Loading app/application.rb")
-load File.expand_path(File.join(File.dirname(__FILE__), '..', 'app', 'controllers', 'application.rb'))
+Castronaut::Application.run!

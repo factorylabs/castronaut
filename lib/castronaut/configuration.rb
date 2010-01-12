@@ -23,6 +23,8 @@ module Castronaut
       config.logger = config.setup_logger
       config.debug_initialize if config.logger.debug?
       config.connect_activerecord 
+      puts config.inspect
+      puts "hello"
       config
     end
 
