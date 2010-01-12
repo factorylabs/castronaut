@@ -16,7 +16,7 @@ begin
   files << Dir["lib/**/*", "app/**/*", "config/**/*",  "vendor/**/*"]
   
   Jeweler::Tasks.new do |s|
-    s.name = "castronaut"
+    s.name = "factorylabs-castronaut"
     s.summary = "Your friendly, cigar smoking authentication dicator... From Space!"
     s.description = "Your friendly, cigar smoking authentication dicator... From Space!"
     s.homepage = "http://github.com/relevance/castronaut"
