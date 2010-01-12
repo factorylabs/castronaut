@@ -1,3 +1,7 @@
+Dir[File.dirname(__FILE__) + "/../vendor/**"].each do |dir| 
+  $LOAD_PATH.unshift(File.directory?(lib = "#{dir}/lib") ? lib : dir)
+end
+
 require 'active_support'
 require 'activerecord'
 

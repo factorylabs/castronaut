@@ -14,9 +14,4 @@ end
 
 require File.expand_path(File.join(File.dirname(__FILE__), 'lib', 'castronaut', 'application', 'application'))
 
-# Castronaut::Application.default_options.merge!(
-#   :run => false,
-#   :env => :production
-# )
-
 run Castronaut::Application.new
